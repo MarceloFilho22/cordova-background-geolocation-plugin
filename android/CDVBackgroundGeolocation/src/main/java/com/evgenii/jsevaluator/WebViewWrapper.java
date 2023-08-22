@@ -9,6 +9,8 @@ import android.util.Base64;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import android.view.ViewGroup.LayoutParams;
+
 import com.evgenii.jsevaluator.interfaces.CallJavaResultInterface;
 import com.evgenii.jsevaluator.interfaces.WebViewWrapperInterface;
 
@@ -18,16 +20,19 @@ public class WebViewWrapper implements WebViewWrapperInterface {
 
 	public WebViewWrapper(Context context, CallJavaResultInterface callJavaResult) {
 		mWebView = new WebView(context);
-
+		//NEW
+		mWebView.setInitialScale(50);
+		//NEW
+		mWebView.setLayoutParams(LayoutParams(100,100));
 		// web view will not draw anything - turn on optimizations
 		mWebView.setWillNotDraw(true);
-
+		
 		final WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setDefaultTextEncodingName("utf-8");
+		webSettings.setLoadWithOverviewMode(false);
 		final JavaScriptInterface jsInterface = new JavaScriptInterface(callJavaResult);
 		mWebView.addJavascriptInterface(jsInterface, JsEvaluator.JS_NAMESPACE);
-		mWebView.setInitialScale(50);
 	}
 
 	@Override
