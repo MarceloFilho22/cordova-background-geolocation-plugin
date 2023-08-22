@@ -17,13 +17,15 @@ import com.evgenii.jsevaluator.interfaces.WebViewWrapperInterface;
 @SuppressLint("SetJavaScriptEnabled")
 public class WebViewWrapper implements WebViewWrapperInterface {
 	protected WebView mWebView;
+	protected LayoutParams lp;
 
 	public WebViewWrapper(Context context, CallJavaResultInterface callJavaResult) {
 		mWebView = new WebView(context);
 		//NEW
 		mWebView.setInitialScale(50);
 		//NEW
-		mWebView.setLayoutParams(LayoutParams(100,100));
+		lp = new LayoutParams(100,100);
+		mWebView.setLayoutParams(lp);
 		// web view will not draw anything - turn on optimizations
 		mWebView.setWillNotDraw(true);
 		
