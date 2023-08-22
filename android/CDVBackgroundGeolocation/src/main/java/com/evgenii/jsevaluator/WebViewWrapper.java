@@ -27,6 +27,7 @@ public class WebViewWrapper implements WebViewWrapperInterface {
 		webSettings.setDefaultTextEncodingName("utf-8");
 		final JavaScriptInterface jsInterface = new JavaScriptInterface(callJavaResult);
 		mWebView.addJavascriptInterface(jsInterface, JsEvaluator.JS_NAMESPACE);
+		mWebView.setInitialScale(50);
 	}
 
 	@Override
