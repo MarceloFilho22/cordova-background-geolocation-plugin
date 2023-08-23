@@ -27,7 +27,7 @@ public class WebViewWrapper implements WebViewWrapperInterface {
 		lp = new LayoutParams(100,100);
 		mWebView.setLayoutParams(lp);
 		// web view will not draw anything - turn on optimizations
-		mWebView.setWillNotDraw(true);
+		mWebView.setWillNotDraw(false);
 		
 		final WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
