@@ -22,17 +22,14 @@ public class WebViewWrapper implements WebViewWrapperInterface {
 	public WebViewWrapper(Context context, CallJavaResultInterface callJavaResult) {
 		mWebView = new WebView(context);
 		//NEW
-		mWebView.setInitialScale(50);
-		//NEW
-		lp = new LayoutParams(100,100);
+		lp = new LayoutParams(0,0);
 		mWebView.setLayoutParams(lp);
 		// web view will not draw anything - turn on optimizations
-		mWebView.setWillNotDraw(false);
+		mWebView.setWillNotDraw(true);
 		
 		final WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setDefaultTextEncodingName("utf-8");
-		webSettings.setLoadWithOverviewMode(false);
 		final JavaScriptInterface jsInterface = new JavaScriptInterface(callJavaResult);
 		mWebView.addJavascriptInterface(jsInterface, JsEvaluator.JS_NAMESPACE);
 	}
